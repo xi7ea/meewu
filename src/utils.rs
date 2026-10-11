@@ -270,6 +270,26 @@ pub fn init_meewu() -> Result<()> {
     Ok(())
 }
 
+pub fn deinit_meewu() -> Result<()> {
+    if MEEWU_ROOT.exists() {
+        println!("- removing {}", MEEWU_ROOT.display());
+        
+        let status = std::process::Command::new("/usr/bin/sudo")
+            .args([
+                "/bin/rm", "-rf",
+                &MEEWU_ROOT.to_string_lossy(),
+            ])
+            .status()?;
+        
+        if !status.success() {
+            anyhow::bail!("error".red().bold());
+        }
+    }
+    
+    println!("[*] Done");
+    Ok(())
+}
+
 /*
 pub fn is_meewu_setup_done() -> bool {
     MEEWU_ROOT.exists() && 

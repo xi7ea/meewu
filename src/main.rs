@@ -15,6 +15,7 @@ mod utils;
 use modules::installer::MewModInstaller;
 
 use utils::init_meewu;
+use utils::deinit_meewu;
 use utils::is_meewu_setup_done;
 
 #[derive(Parser)]
@@ -58,6 +59,7 @@ enum Commands {
     },
     /// show meewu help
     Help,
+    Deinit,
 }
 
 fn main() -> Result<()> {
@@ -65,6 +67,11 @@ fn main() -> Result<()> {
 
     if let Some(Commands::Init) = cli.command {
         init_meewu()?;
+        return Ok(());
+    }
+
+    if let Some(Commands::Deinit) = cli.command {
+        utils::deinit_meewu()?;
         return Ok(());
     }
 
