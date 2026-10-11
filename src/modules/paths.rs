@@ -1,3 +1,10 @@
+/*
+    paths.rs
+    SPDX-License-Identifier: GPL-3.0-only
+    --=================================--
+    Author: xitea <xitea@proton.me>
+*/
+
 use once_cell::sync::Lazy;
 use std::process::Command;
 use std::path::PathBuf;
