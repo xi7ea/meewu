@@ -6,3 +6,6 @@
 
 # project (temporary)
 **/README.md
+*.env
+**/*.md
+
